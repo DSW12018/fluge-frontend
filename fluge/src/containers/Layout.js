@@ -8,7 +8,7 @@ const Layout = () => (
   <div>
     <Nav />
     <Route exact path="/" component={Home} />
-    <Route exact path="/voos" component={Flights} />
+    <Route exact path="/voos/:origin/:destination/:departure/:arrival" component={Flights} />
   </div>
 );
 

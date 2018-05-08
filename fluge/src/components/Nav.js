@@ -10,19 +10,22 @@ const Nav = () => (
     <div className="collapse navbar-collapse" id="probootstrap-menu">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item active">
-          <a className="nav-link" href="index.html">Home</a>
+          <a className="nav-link" href="/">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="city-guides.html">City Guides</a>
+          <a className="nav-link" href="city-guides.html">Sobre Nós</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="services.html">Services</a>
+          <a className="nav-link" href="/atendimento">Atendimento</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="travel.html">Travel With Us</a>
+          <a className="nav-link" href="/reservas">Minhas Reservas</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="contact.html">Contact</a>
+          <a className="nav-link" href="/entrar">
+            Entrar
+            <span class="icon ion-arrow-right-c ml-2" />
+          </a>
         </li>
       </ul>
     </div>
