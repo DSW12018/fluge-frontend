@@ -46,6 +46,7 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  background-image: url('../images/destinations/rio.jpg');
   padding: 7em 0; }
   .probootstrap-cover .overlay {
     position: absolute;

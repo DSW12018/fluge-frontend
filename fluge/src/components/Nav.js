@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => (
   <nav className="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
     <div className="container">
-    <a className="navbar-brand" href="index.html">Fluge</a>
+    <a className="navbar-brand" href="/">Fluge</a>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
       <span><i className="ion-navicon"></i></span>
     </button>
@@ -13,7 +14,7 @@ const Nav = () => (
           <a className="nav-link" href="/">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="city-guides.html">Sobre Nós</a>
+          <Link className="nav-link" to="/sobre">Sobre Nós</Link>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/atendimento">Atendimento</a>
