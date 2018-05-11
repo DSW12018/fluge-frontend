@@ -1,7 +1,8 @@
 import React from 'react';
-import { graphql } from 'react-apollo'
+import { graphql } from 'react-apollo';
 import FlightCard from './FlightCard';
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
+import Filters from '../containers/Filters';
 
 const SEARCH_FLIGHT_QUERY = gql`
   query {
@@ -28,6 +29,7 @@ const SEARCH_FLIGHT_QUERY = gql`
     }
   }
 `
+
 class Flight extends React.Component {
   render() {
     const { flightsQuery } = this.props;
@@ -68,21 +70,7 @@ class Flight extends React.Component {
                 </div>
                 <div className="row">
                   <div className="col-md-3">
-                    <div className="card probootstrap-animate fadeInUp probootstrap-animated">
-                      <div className="card-body">
-                        <h5>Filtrar Voos</h5>
-                      </div>
-                      <div className="card-header border-0">Companhia Aérea</div>
-                      <div className="card-body">
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                      </div>
-                      <div className="card-header">Turno</div>
-                      <div className="card-body">
-                        <p>Manhã</p>
-                        <p>Tarde</p>
-                        <p>Noite</p>
-                      </div>
-                    </div>
+                    <Filters />
                   </div>
                   <div className="col-md-9">
                     <div className="card alert alert-info">Selecione o voo de ida.</div>
