@@ -3,6 +3,7 @@ import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
+import createMiddleware from 'redux-saga';
 
 export const history = createHistory();
 
@@ -10,7 +11,9 @@ const initialState = {};
 
 const enhancers = [];
 
+export const sagaMiddlewareObserver = createMiddleware();
 const middleware = [
+  sagaMiddlewareObserver,
   routerMiddleware(history)
 ];
 
