@@ -1,21 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import configureStore, { history, sagaMiddlewareObserver } from './store';
+import { ApolloProvider } from 'react-apollo';
+import { client } from './apollo';
+import Layout from './containers/Layout';
+import './assets/css/index.css';
+import './assets/js/index.js';
+import sagaSubject from './sagas_observers';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const store = configureStore();
+  sagaMiddlewareObserver.run(sagaSubject.notify);
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <ApolloProvider client={client}>
+          <Layout />
+        </ApolloProvider>
+      </ConnectedRouter>
+    </Provider>
+  );
+};
 
 export default App;

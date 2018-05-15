@@ -3,16 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client-preset": "^1.0.8",
+    "bootstrap": "^4.1.1",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "history": "^4.7.2",
+    "jquery": "^3.3.1",
+    "jquery-waypoints": "^2.0.5",
+    "jquery.easing": "^1.4.1",
+    "popper.js": "^1.14.3",
     "react": "^16.3.2",
+    "react-apollo": "^2.1.4",
     "react-dom": "^16.3.2",
-    "react-router": "^3.2.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6"
   }
 }
