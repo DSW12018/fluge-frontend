@@ -15,7 +15,7 @@ class Subject {
 
   *notify() {
     // const observers = this.observers.map(observer => observer());
-    yield all([filterObserver()]);
+    // yield all(observers);
   }
 
 }

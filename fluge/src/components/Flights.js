@@ -5,10 +5,10 @@ import gql from 'graphql-tag';
 import Filters from '../containers/Filters';
 
 const SEARCH_FLIGHT_QUERY = gql`
-  query {
+  query flights($origin: String!, $destination: String!){
     flights(
-      origin_id: "e57bfbf4-f9e9-43c7-927d-64f28813cd14",
-      destination_id: "ad275667-ff3c-4794-a089-0038a07f992b"
+      origin: $origin,
+      destination: $destination
     ) {
       airline {
         iata,
@@ -31,6 +31,20 @@ const SEARCH_FLIGHT_QUERY = gql`
 `
 
 class Flight extends React.Component {
+  _fetchFlights = async () => {
+    const { origin, destination } = this.props;
+    await this.props.flightsQuery({
+      variables: {
+        origin,
+        destination
+      }
+    })
+  }
+
+  componentDidMount() {
+    // this._fetchFlights();
+  }
+
   render() {
     const { flightsQuery } = this.props;
 
@@ -40,6 +54,7 @@ class Flight extends React.Component {
 
     // 2
     if (flightsQuery && flightsQuery.error) {
+      console.log(flightsQuery.error);
       return <div>Error</div>
     }
 
@@ -50,22 +65,13 @@ class Flight extends React.Component {
         <section className="probootstrap-cover overflow-hidden relative" data-stellar-background-ratio="0.5" id="section-home">
           <div className="overlay"></div>
             <div className="container">
-              <div className="row align-items-center text-center">
-                <div className="col-md">
-                  <h2 className="heading mb-2 display-4 font-light probootstrap-animate">Get In Touch</h2>
-                  <p className="lead mb-5 probootstrap-animate">Hope u like it! another free template by <a href="https://uicookies.com/" target="_blank">uicookies.com</a> Under License <a href="https://uicookies.com/license" target="_blank">CC 3.0</a></p>
-                  <p className="probootstrap-animate">
-                    <a href="https://free-template.co/" target="_blank" role="button" className="btn btn-primary p-3 mr-3 pl-5 pr-5 text-uppercase d-lg-inline d-md-inline d-sm-block d-block mb-3">More Templates Here</a>
-                  </p>
-                </div>
-              </div>
             </div>
           </section>
           <section className="probootstrap_section bg-light">
               <div className="container">
                 <div className="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
                   <div className="col-md-12">
-                    <h2 className="display-4 border-bottom probootstrap-section-heading">Brasília (BSB) ->    x Rio de Janeiro (SDU)</h2>
+                    <h2 className="display-4 border-bottom probootstrap-section-heading">Brasília (BSB) -> Rio de Janeiro (SDU)</h2>
                   </div>
                 </div>
                 <div className="row">
@@ -89,4 +95,21 @@ class Flight extends React.Component {
   }
 }
 
-export default graphql(SEARCH_FLIGHT_QUERY, { name: 'flightsQuery' })(Flight);
+// const withData = graphql(COMPANY_QUERY, {
+//   options: (ownProps) => ({ variables: { companyId: ownProps.params.companyId } }),
+//   props: ({ data: { loading, companyByCompanyId, error } }) => ({
+//     loading,
+//     error,
+//     company: companyByCompanyId,
+//   }),
+// });
+
+
+export default graphql(SEARCH_FLIGHT_QUERY, {
+  options: (ownProps) => ({
+    variables: {
+      origin: ownProps.match.params.origin,
+      destination: ownProps.match.params.destination
+    }
+  }),
+  name: 'flightsQuery' })(Flight);
